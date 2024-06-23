@@ -6,11 +6,11 @@ Chart.register(...registerables);
 
 function App() {
   const chartRef = useRef(null);
-  let myChart;
+  const myChartRef = useRef(null);
 
   useEffect(() => {
     const ctx = chartRef.current.getContext('2d');
-    myChart = new Chart(ctx, {
+    myChartRef.current = new Chart(ctx, {
       type: 'bar',
       data: {
         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -48,7 +48,7 @@ function App() {
     });
 
     return () => {
-      myChart.destroy();
+      myChartRef.current.destroy();
     };
   }, []);
 
